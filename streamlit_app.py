@@ -59,7 +59,3 @@ if __name__ == "__main__":
 #    if st.button('Predict'):
 #        prediction = model.predict(input_df)
 #        st.write(f'Prediction: {prediction[0]}')
-
-# Run the app
-if __name__ == '__main__':
-    main()
