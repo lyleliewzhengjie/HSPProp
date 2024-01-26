@@ -33,6 +33,7 @@ def get_user_input():
     return features
 
 def main():
+    st.title('Predicting if a Solvent Dissolves a Polymer')
     # Other parts of your app, including get_user_input()
     # ...
 
