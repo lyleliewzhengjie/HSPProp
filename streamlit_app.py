@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import joblib
+import random
 
 def random_prediction():
     # Randomly choose between "Soluble" and "Insoluble"
