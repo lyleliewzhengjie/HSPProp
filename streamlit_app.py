@@ -3,6 +3,9 @@ import pandas as pd
 import joblib
 import random
 
+# Cache to store previous predictions
+predictions_cache = {}
+
 def get_user_input():
     # Create two columns for inputs
     col1, col2 = st.columns(2)
@@ -32,15 +35,33 @@ def get_user_input():
     # For now, we're not using these inputs, so just return an empty DataFrame
     return pd.DataFrame()
 
+def generate_or_retrieve_prediction(inputs):
+    # Convert inputs to a hashable tuple
+    inputs_tuple = tuple(inputs.values())
+    
+    # Check if these inputs have been predicted before
+    if inputs_tuple in predictions_cache:
+        # Return the stored prediction
+        return predictions_cache[inputs_tuple]
+    else:
+        # Generate a new random prediction
+        prediction = random.choice(["Soluble", "Insoluble"])
+        # Store this prediction in the cache
+        predictions_cache[inputs_tuple] = prediction
+        return prediction
+
 def main():
     st.title('HSPProp: Polymer Solubility Prediction')
 
-    input_df = get_user_input()
+    # Create input form
+    with st.form("input_form"):
+        input_df = get_user_input()
+        submit_button = st.form_submit_button("Predict")
 
-    # Create a 'Predict' button
-    if st.button('Predict'):
-        # Generate a random prediction when the button is clicked
-        prediction = random.choice(["Soluble", "Insoluble"])
+    # Handle form submission
+    if submit_button:
+        # Generate or retrieve prediction based on input values
+        prediction = generate_or_retrieve_prediction(input_df.iloc[0])
         st.write(f'Prediction: {prediction}')
 
 if __name__ == "__main__":
