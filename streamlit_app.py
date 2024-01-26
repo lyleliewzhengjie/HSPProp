@@ -33,7 +33,7 @@ def get_user_input():
     return pd.DataFrame()
 
 def main():
-    st.title('Solubility Prediction App')
+    st.title('HSPProp: Polymer Solubility Prediction')
 
     input_df = get_user_input()
 
