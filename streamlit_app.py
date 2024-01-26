@@ -32,16 +32,16 @@ def get_user_input():
     return features
 
 # Main function for the Streamlit app
-def main():
-    st.title('Predicting if a Solvent Dissolves a Polymer')
-
-    # Get user input
-    input_df = get_user_input()
-
-    # Prediction
-    if st.button('Predict'):
-        prediction = model.predict(input_df)
-        st.write(f'Prediction: {prediction[0]}')
+# def main():
+#    st.title('Predicting if a Solvent Dissolves a Polymer')
+#
+#    # Get user input
+#    input_df = get_user_input()
+#
+#    # Prediction
+#    if st.button('Predict'):
+#        prediction = model.predict(input_df)
+#        st.write(f'Prediction: {prediction[0]}')
 
 # Run the app
 if __name__ == '__main__':
