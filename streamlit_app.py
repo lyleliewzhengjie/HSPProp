@@ -3,50 +3,39 @@ import pandas as pd
 import joblib
 import random
 
-def random_prediction():
-    # Randomly choose between "Soluble" and "Insoluble"
-    return random.choice(["Soluble", "Insoluble"])
-
 def get_user_input():
     # Create widgets for each feature
-    polymer_repeating_unit_mw = st.number_input('Polymer Repeating Unit Molecular Weight', min_value=0.0, max_value=10000.0, value=500.0)
-    polymer_mw = st.number_input('Polymer Molecular Weight', min_value=0.0, max_value=100000.0, value=10000.0)
-    polymer_logp = st.number_input('Polymer LogP', min_value=-10.0, max_value=10.0, value=0.0)
-    tpsa = st.number_input('TPSA', min_value=0.0, max_value=1000.0, value=100.0)
-    num_h_donor = st.number_input('Number of H Donor', min_value=0, max_value=10, value=1)
-    solvent_mw = st.number_input('Solvent Molecular Weight', min_value=0.0, max_value=1000.0, value=100.0)
-    solvent_logp = st.number_input('Solvent LogP', min_value=-10.0, max_value=10.0, value=0.0)
-    solvent_dielectric_const = st.number_input('Solvent Dielectric Constant', min_value=0.0, max_value=100.0, value=10.0)
-    solvent_dipole_moments = st.number_input('Solvent Dipole Moments', min_value=0.0, max_value=10.0, value=1.0)
-    solvent_viscosity = st.number_input('Solvent Viscosity', min_value=0.0, max_value=1000.0, value=10.0)
-    solvent_d_d = st.number_input('Solvent δD', min_value=0.0, max_value=100.0, value=10.0)
-    solvent_d_p = st.number_input('Solvent δP', min_value=0.0, max_value=100.0, value=10.0)
-    solvent_d_h = st.number_input('Solvent δH', min_value=0.0, max_value=100.0, value=10.0)
+    polymer_repeating_unit_mw = st.number_input('Polymer Repeating Unit Molecular Weight')
+    polymer_mw = st.number_input('Polymer Molecular Weight')
+    polymer_logp = st.number_input('Polymer LogP')
+    tpsa = st.number_input('TPSA')
+    num_h_donor = st.number_input('Number of H Donor')
+    solvent_mw = st.number_input('Solvent Molecular Weight')
+    solvent_logp = st.number_input('Solvent LogP')
+    solvent_dielectric_constant = st.number_input('Solvent Dielectric Constant')
+    solvent_dipole_moments = st.number_input('Solvent Dipole Moments')
+    solvent_viscosity = st.number_input('Solvent Viscosity')
+    solvent_dd = st.number_input('Solvent δD')
+    solvent_dp = st.number_input('Solvent δP')
+    solvent_dh = st.number_input('Solvent δH')
 
-    # Create a DataFrame from the inputs
-    features = pd.DataFrame([[polymer_repeating_unit_mw, polymer_mw, polymer_logp, tpsa, num_h_donor, 
-                              solvent_mw, solvent_logp, solvent_dielectric_const, solvent_dipole_moments, 
-                              solvent_viscosity, solvent_d_d, solvent_d_p, solvent_d_h]], 
-                            columns=['Polymer Repeating Unit MW', 'Polymer MW', 'Polymer LogP', 'TPSA', 'Number of H Donor', 
-                                     'Solvent MW', 'Solvent LogP', 'Solvent Dielectric Constant', 'Solvent Dipole Moments', 
-                                     'Solvent Viscosity', 'Solvent δD', 'Solvent δP', 'Solvent δH'])
-    return features
+    # Create a DataFrame from the inputs (if you need to use these inputs)
+    # features = pd.DataFrame([[...]], columns=[...])
+
+    # For now, we're not using these inputs, so just return an empty DataFrame
+    return pd.DataFrame()
 
 def main():
-    st.title('Predicting if a Solvent Dissolves a Polymer')
-    # Other parts of your app, including get_user_input()
-    # ...
+    st.title('Polymer Solubility Prediction App')
 
-    # Get user input
     input_df = get_user_input()
 
-    # Randomly predict output
-    prediction = random_prediction()
+    # Create a 'Predict' button
+    if st.button('Predict'):
+        # Generate a random prediction when the button is clicked
+        prediction = random.choice(["Soluble", "Insoluble"])
+        st.write(f'Prediction: {prediction}')
 
-    # Display the prediction
-    st.write(f"The prediction is: {prediction}")
-
-# Run the app
 if __name__ == "__main__":
     main()
 
