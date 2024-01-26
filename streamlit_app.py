@@ -2,8 +2,9 @@ import streamlit as st
 import pandas as pd
 import joblib
 
-# Load the trained RandomForest model
-model = joblib.load('rf_classifier.joblib')
+def random_prediction():
+    # Randomly choose between "Soluble" and "Insoluble"
+    return random.choice(["Soluble", "Insoluble"])
 
 def get_user_input():
     # Create widgets for each feature
