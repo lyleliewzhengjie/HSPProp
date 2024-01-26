@@ -31,6 +31,23 @@ def get_user_input():
                                      'Solvent Viscosity', 'Solvent δD', 'Solvent δP', 'Solvent δH'])
     return features
 
+def main():
+    # Other parts of your app, including get_user_input()
+    # ...
+
+    # Get user input
+    input_df = get_user_input()
+
+    # Randomly predict output
+    prediction = random_prediction()
+
+    # Display the prediction
+    st.write(f"The prediction is: {prediction}")
+
+# Run the app
+if __name__ == "__main__":
+    main()
+
 # Main function for the Streamlit app
 # def main():
 #    st.title('Predicting if a Solvent Dissolves a Polymer')
